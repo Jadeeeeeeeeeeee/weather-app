@@ -1,147 +1,78 @@
-html{
-height: 100%;
-width: 100%;
+html, body {
+  height: 100%;
+  width: 100%;
 }
 
-body{
-  height: 98%;
-  width: 98%;
+body {
+  margin: 0;
+  padding: 0;
   background-color: rgb(78, 78, 78);
+  font-family: Arial, sans-serif; /* It's good practice to specify a fallback font */
 }
 
-h1{
+h1, h2 {
   position: absolute;
   left: 50%;
-  top: 40%;
-  transform: translate(-50%,-50%);
-  font-size: 200%;
-  font-family: arial;
+  transform: translateX(-50%);
+  text-align: center;
 }
 
-h2{
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  font-size: 150%;
-  font-family: arial;
+h1 {
+  top: 35%; /* Adjusted for better vertical alignment */
+  font-size: 2rem; /* Responsive font size but starts with a reasonable default */
 }
 
-.Div{
+h2 {
+  top: 45%; /* Adjusted for better vertical alignment */
+  font-size: 1.5rem;
+}
+
+input {
   position: absolute;
   left: 45%;
+  transform: translateX(-50%);
   top: 75%;
-  transform: translate(-50%,-50%);
   background-color: white;
-  height: 10%;
-  width: 18%;
+  height: 45px; /* Fixed height for better control */
+  width: 80%; /* Max width to maintain padding on small screens */
+  max-width: 300px; /* Maximum width to avoid overly wide input field on large screens */
+  border: none;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
+  font-size: 1rem;
 }
 
-input{
+button {
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
-  height: 80%;
-  width: 80%;
-  text-decoration: none;
-  border: 0px solid black;
-  font-size: xx-large;
-  font-family: arial;
-  background-color: rgb(255, 255, 255);
-}
-button{
-  position: absolute;
-  left: 59%;
+  left: 57.7%;
+  transform: translateX(-50%) ;
   top: 75%;
-  transform: translate(-50%,-50%);
-  width: 10%;
-  height: 10%;
-  text-decoration: none;
-  border: 0px solid black;
-  font-size: xx-large;
-  font-family: arial;
+  width: 130px; /* Fixed width */
+  height: 47px; /* Slightly taller for easier interaction on touch devices */
+  font-size: 1rem;
+  font-family: Arial, sans-serif;
   background-color: rgb(0, 34, 255);
   color: white;
+  border: none;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
 }
 
-button:hover{
+button:hover {
   cursor: pointer;
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
 
-/* Base styles */
-body {
-  font-family: 'Arial', sans-serif;
-}
-
-/* iPhone 8, 8 Plus, iPhone SE (2nd generation) */
-@media only screen 
-  and (device-width : 375px) 
-  and (device-height : 667px), 
-  (device-width : 414px) 
-  and (device-height : 736px) {
-  /* Styles here */
-}
-
-/* iPhone X, XS, 11 Pro, 12 mini */
-@media only screen 
-  and (device-width : 375px) 
-  and (device-height : 812px) {
-  /* Styles here */
-}
-
-/* iPhone XR, XS Max, 11, 11 Pro Max */
-@media only screen 
-  and (device-width : 414px) 
-  and (device-height : 896px) {
-  /* Styles here */
-}
-
-/* iPhone 12, 12 Pro, 13, 13 Pro */
-@media only screen 
-  and (device-width : 390px) 
-  and (device-height : 844px) {
-  button{
-  position: absolute;
-  left: 70%;
-  top: 75%;
-  transform: translate(-50%,-50%);
-  width: 10%;
-  height: 10%;
-  text-decoration: none;
-  border: 0px solid black;
-  font-size: xx-large;
-  font-family: arial;
-  background-color: rgb(0, 34, 255);
-  color: white;
-  border-top-right-radius: 50px;
-  border-bottom-right-radius: 50px;
+/* Media Queries for small devices */
+@media (max-width: 768px) {
+  h1, h2 {
+    font-size: 1.25rem; /* Smaller font size on small devices */
   }
 
-  .Div{
-    position: absolute;
-    left: 40%;
-    top: 75%;
-    transform: translate(-50%,-50%);
-    background-color: white;
-    height: 10%;
-    width: 18%;
-    border-top-left-radius: 50px;
-    border-bottom-left-radius: 50px;
+  input, button {
+    font-size: 0.9rem; /* Adjust font size for better readability */
   }
-}
-
-/* iPhone 12 Pro Max, 13 Pro Max */
-@media only screen 
-  and (device-width : 428px) 
-  and (device-height : 926px) {
-  /* Styles here */
 }

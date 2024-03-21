@@ -65,9 +65,7 @@ export default function Weather() {
             ) : (
                 <h2>Weather: {weather ? `${weather} °C` : 'Loading...'} </h2>
             )}
-            <div className='Div'>
                 <input type="text" id='inputOb' value={localLoc} onChange={handleChange}/>
-            </div>
             <button onClick={changeLocation}>Change Location</button>
         </>
     );
