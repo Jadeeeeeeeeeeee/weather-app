@@ -1,0 +1,78 @@
+html{
+height: 100%;
+width: 100%;
+}
+
+body{
+  height: 98%;
+  width: 98%;
+  background-color: rgb(78, 78, 78);
+}
+
+h1{
+  position: absolute;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%,-50%);
+  font-size: 4rem;
+  font-family: arial;
+}
+
+h2{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  font-size: 4rem;
+  font-family: arial;
+}
+
+.Div{
+  position: absolute;
+  left: 45%;
+  top: 75%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  height: 200px;
+  width: 700px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+}
+
+input{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 175px;
+  width: 650px;
+  text-decoration: none;
+  border: 0px solid black;
+  font-size: 6rem;
+  font-family: arial;
+  background-color: rgb(255, 255, 255);
+}
+button{
+  position: absolute;
+  left: 70%;
+  top: 75%;
+  transform: translate(-50%,-50%);
+  width: 200px;
+  height: 200px;
+  text-decoration: none;
+  border: 0px solid black;
+  font-size: 3rem;
+  font-family: arial;
+  background-color: rgb(0, 34, 255);
+  color: white;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
+}
+
+button:hover{
+  cursor: pointer;
+}
+
+input:focus{
+  outline: none;
+}
