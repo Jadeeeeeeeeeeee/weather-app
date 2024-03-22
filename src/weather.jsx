@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import sun from './assets/sun.png';
 import cold from './assets/cold.png';
-import cloudy from './assets/cloudy.png'
+import cloudy from './assets/cloudy.png';
 
 export default function Weather() {
     const [weather, setWeather] = useState(null);
@@ -14,7 +14,6 @@ export default function Weather() {
     const [humidity, setHumidity] = useState(null);
     const [windspeed, setWindspeed] = useState(null);
     const apiKey = import.meta.env.VITE_API_KEY;
-    // Initialize weatherImage state with a default image, e.g., sun
     const [weatherImage, setWeatherImage] = useState(sun); 
     const [feelsLikeTem, setFeelsLike] = useState(null);
 
@@ -26,6 +25,7 @@ export default function Weather() {
                         const { lat, lon } = res.data[0];
                         setLat(lat);
                         setLon(lon);
+                        setErrorMessage(""); // Reset errorMessage upon successful location fetch
                     } else {
                         setErrorMessage("Location not found. Please try another location.");
                         setWeather(null); 
@@ -47,8 +47,8 @@ export default function Weather() {
                     setHumidity(res.data.main.humidity);
                     setWindspeed(res.data.wind.speed);
                     setFeelsLike(res.data.main.feels_like);
-                    // Call ImageIconChange directly with newWeather as argument
                     ImageIconChange(newWeather); 
+                    setErrorMessage(""); // Reset errorMessage upon successful weather data fetch
                 })
                 .catch((error) => {
                     console.error('Error fetching weather data:', error);
@@ -65,7 +65,6 @@ export default function Weather() {
         setLocalLoc(e.target.value);
     }
 
-    // Accept weather as parameter to directly use it for decision making
     function ImageIconChange(currentWeather) {
         if (currentWeather > 25) {
             setWeatherImage(sun);
@@ -74,7 +73,6 @@ export default function Weather() {
         } else if (currentWeather < 10) {
             setWeatherImage(cold);
         }
-            
     }
 
     return (
@@ -86,21 +84,10 @@ export default function Weather() {
             ) : (
                 <h2 className='temp'>Temp: {weather ? `${weather} °C` : 'Loading...'} </h2>
             )}
-            {errorMessage ? (
-                <h2 className='humidity' style={{ color: 'red' }}>{errorMessage}</h2>
-            ) : (
-                <h2 className='humidity'>humidity: {humidity ? `${humidity} %` : 'Loading...'} </h2>
-            )}
-            {errorMessage ? (
-                <h2 className='windspeed' style={{ color: 'red' }}>{errorMessage}</h2>
-            ) : (
-                <h2 className='windspeed'>wind speed:{windspeed ? `${windspeed}kph` : 'Loading...'} </h2>
-            )}
-            {errorMessage ? (
-                <h2 className='feelsLike' style={{ color: 'red' }}>{errorMessage}</h2>
-            ) : (
-                <h2 className='feelsLike'>feels like: {feelsLikeTem ? `${feelsLikeTem} kph` : 'Loading...'} </h2>
-            )}
+            {/* Repeating the errorMessage check for other data might not be necessary if they all depend on the same API call. Consider showing a single error message for simplicity. */}
+            <h2 className='humidity'>Humidity: {humidity ? `${humidity} %` : 'Loading...'} </h2>
+            <h2 className='windspeed'>Wind Speed: {windspeed ? `${windspeed} kph` : 'Loading...'} </h2>
+            <h2 className='feelsLike'>Feels Like: {feelsLikeTem ? `${feelsLikeTem} °C` : 'Loading...'} </h2>
             </div>
             <img src={weatherImage} className='weathericon' alt="Weather icon"/>
             <div className='div'>
