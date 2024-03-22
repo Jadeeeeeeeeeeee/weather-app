@@ -10,21 +10,69 @@ body {
   font-family: Arial, sans-serif; /* It's good practice to specify a fallback font */
 }
 
-h1, h2 {
+h1{
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   text-align: center;
+  width: 500px;
 }
 
 h1 {
-  top: 35%; /* Adjusted for better vertical alignment */
+  top: 0%; /* Adjusted for better vertical alignment */
   font-size: 2rem; /* Responsive font size but starts with a reasonable default */
 }
 
-h2 {
-  top: 45%; /* Adjusted for better vertical alignment */
-  font-size: 1.5rem;
+.MainCont{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  height: 500px;
+  width: 500px;
+  background: linear-gradient(130deg,blue,cyan);
+  border-radius: 50px;
+}
+
+.temp{
+  position: absolute;
+  left:  75%;
+  top: 69.8%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  width: 200px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.humidity{
+  position: absolute;
+  left: 25%;
+  top: 70%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  padding: 0px;
+  margin: 0px;
+}
+
+.windspeed{
+  position: absolute;
+  left: 25%;
+  top: 60%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+  width: 275px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.weathericon{
+  position: absolute;
+  height: 150px;
+  width: 150px;
+  left: 20%;
+  top: 30%;
+  transform: translate(-50%,-50%);
 }
 
 input {
@@ -53,6 +101,7 @@ button {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   padding: 0px;
+  padding: 0px;
 }
 
 button:hover {
@@ -65,13 +114,14 @@ input:focus {
 
 .div{
   position: absolute;
-  top: 60%;
+  top: 90%;
   left: 50%;
   transform: translate(-50%,-50%);
   height: 50px;
   width: 700px;
   align-items: center;
   text-align: center;
+  padding: 0px;
 }
 /* Media Queries for small devices */
 @media (max-width: 768px) {

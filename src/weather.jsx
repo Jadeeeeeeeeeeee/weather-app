@@ -1,6 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-
+import sun from './assets/sun.png';
+import cold from './assets/cold.png';
+import cloudy from './assets/cloudy.png'
 
 export default function Weather() {
     const [weather, setWeather] = useState(null);
@@ -8,11 +10,13 @@ export default function Weather() {
     const [localLoc, setLocalLoc] = useState("");
     const [lat, setLat] = useState(null);
     const [lon, setLon] = useState(null);
-    const [errorMessage, setErrorMessage] = useState(""); // New state variable for error messages
+    const [errorMessage, setErrorMessage] = useState("");
+    const [humidity, setHumidity] = useState(null);
+    const [windspeed, setWindspeed] = useState(null);
     const apiKey = import.meta.env.VITE_API_KEY;
+    // Initialize weatherImage state with a default image, e.g., sun
+    const [weatherImage, setWeatherImage] = useState(sun); 
 
-
-    // Fetch latitude and longitude based on the locationInfo
     useEffect(() => {
         if(locationInfo) {
             axios.get(`https://api.openweathermap.org/geo/1.0/direct?q=${locationInfo}&limit=1&appid=${apiKey}`)
@@ -21,11 +25,9 @@ export default function Weather() {
                         const { lat, lon } = res.data[0];
                         setLat(lat);
                         setLon(lon);
-                        setErrorMessage(""); // Clear any existing error message
                     } else {
-                        // Location not found, set an error message
                         setErrorMessage("Location not found. Please try another location.");
-                        setWeather(null); // Clear previous weather data
+                        setWeather(null); 
                     }
                 })
                 .catch((error) => {
@@ -35,12 +37,16 @@ export default function Weather() {
         }
     }, [locationInfo]);
 
-    // Fetch weather based on latitude and longitude
     useEffect(() => {
         if(lat && lon) {
             axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${apiKey}`)
                 .then((res) => {
-                    setWeather(res.data.main.temp);
+                    const newWeather = res.data.main.temp;
+                    setWeather(newWeather);
+                    setHumidity(res.data.main.humidity);
+                    setWindspeed(res.data.wind.speed);
+                    // Call ImageIconChange directly with newWeather as argument
+                    ImageIconChange(newWeather); 
                 })
                 .catch((error) => {
                     console.error('Error fetching weather data:', error);
@@ -57,18 +63,41 @@ export default function Weather() {
         setLocalLoc(e.target.value);
     }
 
+    // Accept weather as parameter to directly use it for decision making
+    function ImageIconChange(currentWeather) {
+        if (currentWeather > 25) {
+            setWeatherImage(sun);
+        } else if (currentWeather < 25 && currentWeather > 10) {
+            setWeatherImage(cloudy);
+        } else if (currentWeather < 10) {
+            setWeatherImage(cold);
+        }
+            
+    }
+
     return (
-        <>
+        <div className='MainCont'>
             <h1>Current Location: {locationInfo}</h1>
             {errorMessage ? (
-                <h2 style={{ color: 'red' }}>{errorMessage}</h2>
+                <h2 className='temp' style={{ color: 'red' }}>{errorMessage}</h2>
             ) : (
-                <h2>Weather: {weather ? `${weather} °C` : 'Loading...'} </h2>
+                <h2 className='temp'>Temp: {weather ? `${weather} °C` : 'Loading...'} </h2>
             )}
+            {errorMessage ? (
+                <h2 className='humidity' style={{ color: 'red' }}>{errorMessage}</h2>
+            ) : (
+                <h2 className='humidity'>humidity: {humidity ? `${humidity} %` : 'Loading...'} </h2>
+            )}
+            {errorMessage ? (
+                <h2 className='windspeed' style={{ color: 'red' }}>{errorMessage}</h2>
+            ) : (
+                <h2 className='windspeed'>wind speed: {windspeed ? `${windspeed} kph` : 'Loading...'} </h2>
+            )}
+            <img src={weatherImage} className='weathericon' alt="Weather icon"/>
             <div className='div'>
-            <input type="text" id='inputOb' value={localLoc} onChange={handleChange}/>
-            <button onClick={changeLocation}>Change Location</button>
+                <input type="text" id='inputOb' value={localLoc} onChange={handleChange}/>
+                <button onClick={changeLocation}>Change Location</button>
             </div>
-        </>
+        </div>
     );
 }
