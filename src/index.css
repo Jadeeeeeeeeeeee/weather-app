@@ -35,44 +35,54 @@ h1 {
 }
 
 .temp{
-  position: absolute;
-  left:  75%;
-  top: 69.8%;
-  transform: translate(-50%,-50%);
   text-align: center;
-  width: 200px;
+  width: 250px;
   padding: 0px;
   margin: 0px;
 }
 
 .humidity{
-  position: absolute;
-  left: 25%;
-  top: 70%;
-  transform: translate(-50%,-50%);
   text-align: center;
+  width: 250px;
   padding: 0px;
   margin: 0px;
 }
 
 .windspeed{
-  position: absolute;
-  left: 25%;
-  top: 60%;
-  transform: translate(-50%,-50%);
   text-align: center;
-  width: 275px;
+  width: 250px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.feelsLike{
+  text-align: center;
+  width: 250px;
   padding: 0px;
   margin: 0px;
 }
 
 .weathericon{
   position: absolute;
-  height: 150px;
-  width: 150px;
-  left: 20%;
-  top: 30%;
+  height: 225px;
+  width: 225px;
+  left: 25%;
+  top: 35%;
   transform: translate(-50%,-50%);
+  padding: 0px;
+  margin: 0px;
+}
+
+.weatherData{
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  transform: translate(-50%,-50%);
+  height: 54px;
+  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 20px;
 }
 
 input {

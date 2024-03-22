@@ -16,6 +16,7 @@ export default function Weather() {
     const apiKey = import.meta.env.VITE_API_KEY;
     // Initialize weatherImage state with a default image, e.g., sun
     const [weatherImage, setWeatherImage] = useState(sun); 
+    const [feelsLikeTem, setFeelsLike] = useState(null);
 
     useEffect(() => {
         if(locationInfo) {
@@ -45,6 +46,7 @@ export default function Weather() {
                     setWeather(newWeather);
                     setHumidity(res.data.main.humidity);
                     setWindspeed(res.data.wind.speed);
+                    setFeelsLike(res.data.main.feels_like);
                     // Call ImageIconChange directly with newWeather as argument
                     ImageIconChange(newWeather); 
                 })
@@ -78,6 +80,7 @@ export default function Weather() {
     return (
         <div className='MainCont'>
             <h1>Current Location: {locationInfo}</h1>
+            <div className='weatherData'>
             {errorMessage ? (
                 <h2 className='temp' style={{ color: 'red' }}>{errorMessage}</h2>
             ) : (
@@ -91,8 +94,14 @@ export default function Weather() {
             {errorMessage ? (
                 <h2 className='windspeed' style={{ color: 'red' }}>{errorMessage}</h2>
             ) : (
-                <h2 className='windspeed'>wind speed: {windspeed ? `${windspeed} kph` : 'Loading...'} </h2>
+                <h2 className='windspeed'>wind speed:{windspeed ? `${windspeed}kph` : 'Loading...'} </h2>
             )}
+            {errorMessage ? (
+                <h2 className='feelsLike' style={{ color: 'red' }}>{errorMessage}</h2>
+            ) : (
+                <h2 className='feelsLike'>feels like: {feelsLikeTem ? `${feelsLikeTem} kph` : 'Loading...'} </h2>
+            )}
+            </div>
             <img src={weatherImage} className='weathericon' alt="Weather icon"/>
             <div className='div'>
                 <input type="text" id='inputOb' value={localLoc} onChange={handleChange}/>
