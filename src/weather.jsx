@@ -105,7 +105,7 @@ export default function Weather() {
             <img src={weatherImage} className='weathericon' alt="Weather icon"/>
             <div className='div'>
                 <input type="text" id='inputOb' value={localLoc} onChange={handleChange}/>
-                <button onClick={changeLocation}>Change Location</button>
+                <button id='button' onClick={changeLocation}>Change Location</button>
             </div>
         </div>
     );

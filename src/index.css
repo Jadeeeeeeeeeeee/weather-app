@@ -86,25 +86,26 @@ h1 {
   row-gap: 20px;
 }
 
-input {
+#inputOb {
   position: relative;
   background-color: white;
-  height: 45px; /* Fixed height for better control */
+  height: 50px; /* Fixed height for better control */
   width: 80%; /* Max width to maintain padding on small screens */
   max-width: 300px; /* Maximum width to avoid overly wide input field on large screens */
   border: none;
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
-  font-size:  200%;
+  font-size: 2rem;
   padding: 0px;
   text-indent: 20px;
   touch-action: none;
+  margin: 0px;
 }
 
 button {
   position: relative;
   width: 130px; /* Fixed width */
-  height: 45px; /* Slightly taller for easier interaction on touch devices */
+  height: 50px; /* Slightly taller for easier interaction on touch devices */
   font-size: 1rem;
   font-family: Arial, sans-serif;
   background-color: rgb(0, 34, 255);
@@ -113,7 +114,6 @@ button {
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   padding: 0px;
-  margin: 0px;
 }
 
 button:hover {
@@ -129,11 +129,15 @@ input:focus {
   top: 90%;
   left: 50%;
   transform: translate(-50%,-50%);
-  height: 45px;
+  height: 50px;
   width: 700px;
   align-items: center;
   text-align: center;
   padding: 0px;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  column-count: 2;
 }
 /* Media Queries for small devices */
 @media (max-width: 768px) {
