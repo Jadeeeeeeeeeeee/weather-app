@@ -122,6 +122,7 @@ export default function Weather() {
             <h2 className='feelsLike'>Feels Like: {feelsLikeTem}°C </h2>
             </div>
             <div className='forcast'>
+               <h5>if your phone tells your diffrent results check <a href="https://www.vox.com/culture/2023/10/25/23929341/apple-weather-app-bad-forecast-dark-sky">this articlet</a> about why phones are non accurte some times non accurate (you can verify the data here on google)</h5>
                <h2 className='forcastText'>tommrow: {tommrowWeather}°C</h2>
                <h2 className='forcastText'>in 2 days: {in2daysWeather}°C</h2>
                <h2 className='forcastText'>in 3 days: {in3daysWeather}°C</h2>
@@ -132,7 +133,6 @@ export default function Weather() {
                 <input type="text" id='inputOb' value={localLoc} onChange={handleChange}/>
                 <button id='button' onClick={changeLocation}>Change Location</button>
             </div>
-            <h5>if youre testing this and your phone app says something diffrent click on <a href="">this article</a> (phone apps are mostly non accurate you can search the results you got here on google too and see its correct)</h5>
         </div>
     );
 }
