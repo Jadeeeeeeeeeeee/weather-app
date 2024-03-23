@@ -30,7 +30,7 @@ h1 {
   top: 50%;
   transform: translate(-50%,-50%);
   height: 500px;
-  width: 500px;
+  width: 1000px;
   background: linear-gradient(130deg,blue,cyan);
   border-radius: 50px;
 }
@@ -76,7 +76,7 @@ h1 {
 
 .weatherData{
   position: absolute;
-  left: 50%;
+  left: 30%;
   top: 70%;
   transform: translate(-50%,-50%);
   height: 54px;
@@ -138,6 +138,24 @@ input:focus {
   display: flex;
   justify-content: center;
   column-count: 2;
+}
+
+.forcast{
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  left: 85%;
+  top: 45%;
+  transform: translate(-50%,-50%);
+  width: 250px;
+}
+
+h5{
+  position: absolute;
+  left: 85%;
+  top: 7%;
+  width: 250px;
+  transform: translate(-50%,-50%);
 }
 /* Media Queries for small devices */
 @media (max-width: 768px) {
